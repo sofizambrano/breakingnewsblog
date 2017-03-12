@@ -32,3 +32,25 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 7ms (Views: 5.0ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for ::1 at 2017-03-12 11:05:49 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"internal"=>true}
+  Rendering /usr/local/lib/ruby/gems/2.3.0/gems/railties-5.0.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/railties-5.0.2/lib/rails/templates/rails/welcome/index.html.erb (4.1ms)
+Completed 200 OK in 18ms (Views: 8.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2017-03-12 12:01:44 -0300
+Started GET "/" for ::1 at 2017-03-12 12:01:45 -0300
+Processing by WelcomeController#index as HTML
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (1.8ms)
+  Rendered welcome/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 721ms (Views: 713.3ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 744ms (Views: 730.7ms | ActiveRecord: 0.0ms)
+
+
