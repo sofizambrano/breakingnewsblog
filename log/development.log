@@ -1,0 +1,34 @@
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/" for ::1 at 2017-03-09 18:09:14 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"internal"=>true}
+  Rendering /usr/local/lib/ruby/gems/2.3.0/gems/railties-5.0.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/railties-5.0.2/lib/rails/templates/rails/welcome/index.html.erb (4.9ms)
+Completed 200 OK in 24ms (Views: 11.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2017-03-12 10:48:26 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"internal"=>true}
+  Rendering /usr/local/lib/ruby/gems/2.3.0/gems/railties-5.0.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/railties-5.0.2/lib/rails/templates/rails/welcome/index.html.erb (4.8ms)
+Completed 200 OK in 21ms (Views: 9.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2017-03-12 10:48:28 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"internal"=>true}
+  Rendering /usr/local/lib/ruby/gems/2.3.0/gems/railties-5.0.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/railties-5.0.2/lib/rails/templates/rails/welcome/index.html.erb (3.4ms)
+Completed 200 OK in 8ms (Views: 6.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2017-03-12 10:48:31 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"internal"=>true}
+  Rendering /usr/local/lib/ruby/gems/2.3.0/gems/railties-5.0.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/railties-5.0.2/lib/rails/templates/rails/welcome/index.html.erb (3.2ms)
+Completed 200 OK in 7ms (Views: 5.0ms | ActiveRecord: 0.0ms)
+
+
