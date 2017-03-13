@@ -54,3 +54,665 @@ Completed 200 OK in 721ms (Views: 713.3ms | ActiveRecord: 0.0ms)
 Completed 200 OK in 744ms (Views: 730.7ms | ActiveRecord: 0.0ms)
 
 
+  [1m[35m (18.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5837082397745584335);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateArticles (20170313173033)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE TABLE "articles" ("id" serial primary key, "title" character varying, "headline" text, "body" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170313173033"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateComments (20170313173446)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "comments" ("id" serial primary key, "author" character varying, "content" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170313173446"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-03-13 17:35:07 UTC], ["updated_at", 2017-03-13 17:35:07 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5837082397745584335)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/" for ::1 at 2017-03-13 14:38:31 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 400ms (Views: 387.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/articles_index" for ::1 at 2017-03-13 14:38:46 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/articles_index"):
+  
+actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.4.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.4.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+puma (3.7.1) lib/puma/configuration.rb:232:in `call'
+puma (3.7.1) lib/puma/server.rb:578:in `handle_request'
+puma (3.7.1) lib/puma/server.rb:415:in `process_client'
+puma (3.7.1) lib/puma/server.rb:275:in `block in run'
+puma (3.7.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered collection of /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [17 times] (8.4ms)
+  Rendered /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (6.7ms)
+  Rendering /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (85.9ms)
+Started GET "/articles/index" for ::1 at 2017-03-13 14:38:57 -0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"index"}
+  [1m[36mArticle Load (0.8ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 16ms (ActiveRecord: 3.6ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Article with 'id'=index):
+  
+app/controllers/articles_controller.rb:67:in `set_article'
+  Rendering /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.2ms)
+  Rendering /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendering /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (58.5ms)
+Started GET "/articles" for ::1 at 2017-03-13 14:39:04 -0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 21ms (Views: 19.1ms | ActiveRecord: 0.4ms)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5837082397745584335);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5837082397745584335)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/articles" for ::1 at 2017-03-13 14:56:04 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 261ms (Views: 237.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-13 14:56:10 -0300
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered welcome/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 19ms (Views: 17.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2017-03-13 14:59:19 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered welcome/index.html.erb within layouts/application (16.1ms)
+Completed 200 OK in 246ms (Views: 234.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/articles" for ::1 at 2017-03-13 14:59:21 -0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 29ms (Views: 25.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/articles" for ::1 at 2017-03-13 15:00:24 -0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 61ms (Views: 56.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/articles/new" for ::1 at 2017-03-13 15:00:25 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (20.3ms)
+  Rendered articles/new.html.erb within layouts/application (22.6ms)
+Completed 200 OK in 62ms (Views: 45.2ms | ActiveRecord: 5.5ms)
+
+
+Started POST "/articles" for ::1 at 2017-03-13 15:02:29 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"24JloZM+xzZVXnxFThKUS8P8JAl/czq3lnk6LLY4G+R3oJnN+HPMqn8bAnCCxkg3MhDajUaW7VG8kvudfyF4Eg==", "article"=>{"title"=>"Dimite el asesor de seguridad nacional de Trump por su relación con Rusia", "headline"=>"Michael Flynn renuncia a un puesto clave de la Casa Blanca tras las revelaciones sobre sus manejos con el embajador ruso.", "body"=>"El segundo gran resbalón de la Administración de Donald Trump en solo tres semanas de mandato tuvo lugar en la noche del lunes. Michael Flynn, consejero de seguridad nacional del presidente, anunció su dimisión a las 11 de la noche de Washington tras revelar la prensa que tuvo contactos con el Kremlin y que mintió al respecto a altos cargos del Gobierno. Según anunció la Casa Blanca, le sustituye por ahora el general Joseph Kellogg, jefe de gabinete del Consejo de Seguridad Nacional del presidente. Este escándalo, que conlleva la primera dimisión del equipo de Trump en estas primeras semanas de Gobierno, se suma al bloqueo judicial del decreto migratorio.\r\n\r\nLa presión en torno a Flynn, un general retirado cuya cercanía con Rusia levantó ampollas desde el principio, fue creciendo desde que a finales de la semana pasada saliera a la luz una reunión que mantuvo en diciembre con el embajador ruso en Washington, Sergei Kislyak. En esa conversación, el ya exconsejero del presidente supuestamente habló sobre las sanciones a Rusia impuestas por los ciberataques que los servicios de inteligencia achacan a Moscú.\r\n\r\nSegún The Washington Post, la ex fiscal general en funciones, Sally Yates (destituida por Trump por negarse a defender el veto migratorio en los tribunales) informó el mes pasado a la Casa Blanca de que Flynn habría mentido a altos cargos del Gobierno -entre ellos, al vicepresidente, Mike Pence- acerca de la naturaleza de la conversación, y advirtió de que el asesor era \"potencialmente vulnerable\" a chantaje por parte de Rusia. El puesto de Flynn es uno de los más cercanos al presidente. El hecho de que la Casa Blanca supiera desde hace un mes que las relaciones de Flynn con el embajador ruso eran sospechosas, o al menos no las que él había dicho, hace presumir que el escándalo no terminará con la dimisión."}, "commit"=>"Create Article"}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "articles" ("title", "headline", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Dimite el asesor de seguridad nacional de Trump por su relación con Rusia"], ["headline", "Michael Flynn renuncia a un puesto clave de la Casa Blanca tras las revelaciones sobre sus manejos con el embajador ruso."], ["body", "El segundo gran resbalón de la Administración de Donald Trump en solo tres semanas de mandato tuvo lugar en la noche del lunes. Michael Flynn, consejero de seguridad nacional del presidente, anunció su dimisión a las 11 de la noche de Washington tras revelar la prensa que tuvo contactos con el Kremlin y que mintió al respecto a altos cargos del Gobierno. Según anunció la Casa Blanca, le sustituye por ahora el general Joseph Kellogg, jefe de gabinete del Consejo de Seguridad Nacional del presidente. Este escándalo, que conlleva la primera dimisión del equipo de Trump en estas primeras semanas de Gobierno, se suma al bloqueo judicial del decreto migratorio.\r\n\r\nLa presión en torno a Flynn, un general retirado cuya cercanía con Rusia levantó ampollas desde el principio, fue creciendo desde que a finales de la semana pasada saliera a la luz una reunión que mantuvo en diciembre con el embajador ruso en Washington, Sergei Kislyak. En esa conversación, el ya exconsejero del presidente supuestamente habló sobre las sanciones a Rusia impuestas por los ciberataques que los servicios de inteligencia achacan a Moscú.\r\n\r\nSegún The Washington Post, la ex fiscal general en funciones, Sally Yates (destituida por Trump por negarse a defender el veto migratorio en los tribunales) informó el mes pasado a la Casa Blanca de que Flynn habría mentido a altos cargos del Gobierno -entre ellos, al vicepresidente, Mike Pence- acerca de la naturaleza de la conversación, y advirtió de que el asesor era \"potencialmente vulnerable\" a chantaje por parte de Rusia. El puesto de Flynn es uno de los más cercanos al presidente. El hecho de que la Casa Blanca supiera desde hace un mes que las relaciones de Flynn con el embajador ruso eran sospechosas, o al menos no las que él había dicho, hace presumir que el escándalo no terminará con la dimisión."], ["created_at", 2017-03-13 18:02:29 UTC], ["updated_at", 2017-03-13 18:02:29 UTC]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/articles/1
+Completed 302 Found in 19ms (ActiveRecord: 2.7ms)
+
+
+Started GET "/articles/1" for ::1 at 2017-03-13 15:02:29 -0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 81ms (Views: 67.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/articles" for ::1 at 2017-03-13 15:02:34 -0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 50ms (Views: 44.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/articles/new" for ::1 at 2017-03-13 15:03:19 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (9.0ms)
+  Rendered articles/new.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 56ms (Views: 52.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/articles" for ::1 at 2017-03-13 15:03:21 -0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 50ms (Views: 46.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/articles/1" for ::1 at 2017-03-13 15:03:33 -0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 42ms (Views: 37.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/articles" for ::1 at 2017-03-13 15:03:36 -0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 42ms (Views: 39.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2017-03-13 15:03:41 -0300
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered welcome/index.html.erb within layouts/application (114.0ms)
+Completed 500 Internal Server Error in 118ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `article' for #<#<Class:0x007fb20449c1c8>:0x007fb20750e3d8>
+Did you mean?  article_url):
+    17:                 <div class="col-md-offset-4 col-md-2">
+    18:                 </div>
+    19:                 <div class="col-md-2">
+    20:                   <td><%= link_to 'Show', article %></td>
+    21:                 </div>
+    22:               </center>
+    23:             </div>
+  
+app/views/welcome/index.html.erb:20:in `block in _app_views_welcome_index_html_erb__687198698625785759_70201301827160'
+app/views/welcome/index.html.erb:7:in `_app_views_welcome_index_html_erb__687198698625785759_70201301827160'
+Started GET "/" for ::1 at 2017-03-13 15:03:42 -0300
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered welcome/index.html.erb within layouts/application (123.8ms)
+Completed 500 Internal Server Error in 130ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `article' for #<#<Class:0x007fb20449c1c8>:0x007fb203a7c490>
+Did you mean?  article_url):
+    17:                 <div class="col-md-offset-4 col-md-2">
+    18:                 </div>
+    19:                 <div class="col-md-2">
+    20:                   <td><%= link_to 'Show', article %></td>
+    21:                 </div>
+    22:               </center>
+    23:             </div>
+  
+app/views/welcome/index.html.erb:20:in `block in _app_views_welcome_index_html_erb__687198698625785759_70201271119200'
+app/views/welcome/index.html.erb:7:in `_app_views_welcome_index_html_erb__687198698625785759_70201271119200'
+  Rendering /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendering /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.4ms)
+  Rendered /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.2ms)
+  Rendering /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendering /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendering /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (106.5ms)
+  Rendered /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (91.9ms)
+Started GET "/" for ::1 at 2017-03-13 15:04:37 -0300
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered welcome/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 21ms (Views: 19.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-13 15:05:05 -0300
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered welcome/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 66ms (Views: 62.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2017-03-13 15:05:44 -0300
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered welcome/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 23ms (Views: 20.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2017-03-13 15:06:04 -0300
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered welcome/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 22ms (Views: 20.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-13 15:06:46 -0300
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered welcome/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 27ms (Views: 25.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2017-03-13 15:08:07 -0300
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered welcome/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 26ms (Views: 24.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2017-03-13 15:09:42 -0300
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered welcome/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 23ms (Views: 20.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-13 15:10:03 -0300
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered welcome/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 27ms (Views: 25.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2017-03-13 15:11:55 -0300
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered welcome/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 33ms (Views: 30.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-13 15:12:11 -0300
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered welcome/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 27ms (Views: 25.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2017-03-13 15:14:05 -0300
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered welcome/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 26ms (Views: 24.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2017-03-13 15:14:17 -0300
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered welcome/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 21ms (Views: 18.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2017-03-13 15:14:18 -0300
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered welcome/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 21ms (Views: 19.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2017-03-13 15:14:39 -0300
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered welcome/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 37ms (Views: 35.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2017-03-13 15:15:22 -0300
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered welcome/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 26ms (Views: 24.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/articles" for ::1 at 2017-03-13 15:16:02 -0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 44ms (Views: 38.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/articles/new" for ::1 at 2017-03-13 15:16:03 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (4.1ms)
+  Rendered articles/new.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 53ms (Views: 49.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/articles" for ::1 at 2017-03-13 15:16:41 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6G7JGJyTWBc/5U8JpD/9LafkJz8VIkSg0rTRgVgkz+5ETDV0995TixWgMTxo6yFRVgjZuyzHk0b4XxAwkT2sGA==", "article"=>{"title"=>"Fiscal de Magallanes golpea la mesa y responde a críticas de ministro Fernández", "headline"=>"“Lo más problema es que el ministro del Interior nunca haya tenido en sus manos una orden de detención judicial”, dijo Eugenio Campos.", "body"=>"Luego de que el ministro del Interior, Mario Fernández, deslizara una crítica hacia la Fiscalía de Magallanes, por la detención considerada ilegal de los 17 carabineros, el fiscal Eugenio Campos defendió las labores que se han realizado en el marco de este bullado caso.\r\n\r\n“Lo más problema es que el ministro de Interior nunca haya tenido en sus manos una orden de detención judicial”, dijo claro el persecutor.\r\n\r\nAdemás, consideró que “en definitiva ese tipo de comentarios no es el apropiado. La verdad que todos deberíamos estar colaborando y sumando para seguir el esclarecimiento de los hechos”.\r\n\r\n“La Fiscalía sigue trabajando hoy y con más fuerte respecto de cada una de las investigaciones. Por cierto que estamos molesto respecto de la resolución indicada por el Tribunal,  que desconoce norma como las tan básicas indicadas en la ley de activos que se rige sobre esta materia, por cierto será un análisis para recurrir ante un tribunal superior de justicia”, agregó Campos.\r\n\r\nEn ese sentido, el fiscal consideró que las indagatorias de este fraude, el que catalogó de “uno de los más que ha sufrido nuestro país”, se han llevado a cabo de acuerdo a toda la normativa vigente.\r\n\r\n“Con el hecho de que el control de detención haya comenzado ayer y terminamos en horas de la madrugada, pudieron darse cuenta que se respetaron todas y cada una de las garantías de los imputados y ese era el objetivo”, detalló.\r\n\r\nDe esta forma, indicó que “la orden judicial da cuenta de una resolución emanada de un Tribunal y que fue solicitada por la Fiscalía respecto de ilícitos, malversación, fraude al fisco, asociación ilícita y lavado de activos y eso lo hemos señalado con fuerza. No es un error de la Fiscalía”.\r\n\r\nRespecto a si esta resolución retrasa la investigación, Campos fue claro en negarlo, pues “hay que tener en conocimiento que el objetivo (de la audiencia de ayer) era ampliar y trasladar al Tribual de Punta Arenas que era el competente. La formalización y las medidas cautelares se solicitan a un Tribunal competente.\r\n\r\nAsí aseguró que están las condiciones para formalizar la investigación durante los próximos días."}, "commit"=>"Create Article"}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "articles" ("title", "headline", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Fiscal de Magallanes golpea la mesa y responde a críticas de ministro Fernández"], ["headline", "“Lo más problema es que el ministro del Interior nunca haya tenido en sus manos una orden de detención judicial”, dijo Eugenio Campos."], ["body", "Luego de que el ministro del Interior, Mario Fernández, deslizara una crítica hacia la Fiscalía de Magallanes, por la detención considerada ilegal de los 17 carabineros, el fiscal Eugenio Campos defendió las labores que se han realizado en el marco de este bullado caso.\r\n\r\n“Lo más problema es que el ministro de Interior nunca haya tenido en sus manos una orden de detención judicial”, dijo claro el persecutor.\r\n\r\nAdemás, consideró que “en definitiva ese tipo de comentarios no es el apropiado. La verdad que todos deberíamos estar colaborando y sumando para seguir el esclarecimiento de los hechos”.\r\n\r\n“La Fiscalía sigue trabajando hoy y con más fuerte respecto de cada una de las investigaciones. Por cierto que estamos molesto respecto de la resolución indicada por el Tribunal,  que desconoce norma como las tan básicas indicadas en la ley de activos que se rige sobre esta materia, por cierto será un análisis para recurrir ante un tribunal superior de justicia”, agregó Campos.\r\n\r\nEn ese sentido, el fiscal consideró que las indagatorias de este fraude, el que catalogó de “uno de los más que ha sufrido nuestro país”, se han llevado a cabo de acuerdo a toda la normativa vigente.\r\n\r\n“Con el hecho de que el control de detención haya comenzado ayer y terminamos en horas de la madrugada, pudieron darse cuenta que se respetaron todas y cada una de las garantías de los imputados y ese era el objetivo”, detalló.\r\n\r\nDe esta forma, indicó que “la orden judicial da cuenta de una resolución emanada de un Tribunal y que fue solicitada por la Fiscalía respecto de ilícitos, malversación, fraude al fisco, asociación ilícita y lavado de activos y eso lo hemos señalado con fuerza. No es un error de la Fiscalía”.\r\n\r\nRespecto a si esta resolución retrasa la investigación, Campos fue claro en negarlo, pues “hay que tener en conocimiento que el objetivo (de la audiencia de ayer) era ampliar y trasladar al Tribual de Punta Arenas que era el competente. La formalización y las medidas cautelares se solicitan a un Tribunal competente.\r\n\r\nAsí aseguró que están las condiciones para formalizar la investigación durante los próximos días."], ["created_at", 2017-03-13 18:16:41 UTC], ["updated_at", 2017-03-13 18:16:41 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/articles/2
+Completed 302 Found in 5ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/articles/2" for ::1 at 2017-03-13 15:16:41 -0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 36ms (Views: 33.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/articles" for ::1 at 2017-03-13 15:16:44 -0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 40ms (Views: 36.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2017-03-13 15:16:49 -0300
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered welcome/index.html.erb within layouts/application (2.1ms)
+Started GET "/" for ::1 at 2017-03-13 15:16:49 -0300
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+Completed 200 OK in 56ms (Views: 53.7ms | ActiveRecord: 0.4ms)
+
+
+  [1m[36mArticle Load (1.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered welcome/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 25ms (Views: 22.0ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/articles" for ::1 at 2017-03-13 15:25:30 -0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 40ms (Views: 28.7ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/articles/new" for ::1 at 2017-03-13 15:25:31 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (3.8ms)
+  Rendered articles/new.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 47ms (Views: 43.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/articles/new" for ::1 at 2017-03-13 16:06:54 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (5.1ms)
+  Rendered articles/new.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 48ms (Views: 43.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/articles" for ::1 at 2017-03-13 16:06:56 -0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (1.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 55ms (Views: 49.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for ::1 at 2017-03-13 16:07:00 -0300
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+Started GET "/" for ::1 at 2017-03-13 16:07:00 -0300
+  [1m[36mArticle Load (1.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered welcome/index.html.erb within layouts/application (5.2ms)
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mArticle Load (4.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered welcome/index.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 59ms (Views: 53.8ms | ActiveRecord: 1.8ms)
+
+
+Completed 200 OK in 41ms (Views: 32.3ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/articles/1" for ::1 at 2017-03-13 16:07:11 -0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 34ms (Views: 28.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/articles" for ::1 at 2017-03-13 16:07:13 -0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 42ms (Views: 39.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/articles/2" for ::1 at 2017-03-13 16:07:15 -0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 43ms (Views: 39.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/articles" for ::1 at 2017-03-13 16:07:17 -0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 43ms (Views: 40.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2017-03-13 16:07:20 -0300
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered welcome/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 23ms (Views: 21.3ms | ActiveRecord: 0.3ms)
+
+
+  [1m[36mArticle Load (2.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+Started GET "/" for ::1 at 2017-03-13 20:47:59 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mArticle Load (1.1ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" ORDER BY "articles"."created_at" ASC LIMIT $1[0m  [["LIMIT", 10]]
+  Rendered welcome/index.html.erb within layouts/application (20.7ms)
+Completed 200 OK in 257ms (Views: 240.8ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/articles/1" for ::1 at 2017-03-13 20:48:11 -0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 32ms (Views: 26.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/articles/1" for ::1 at 2017-03-13 20:49:28 -0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 27ms (Views: 24.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/articles" for ::1 at 2017-03-13 20:49:35 -0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 44ms (Views: 22.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/articles/new" for ::1 at 2017-03-13 20:50:12 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (21.3ms)
+  Rendered articles/new.html.erb within layouts/application (27.5ms)
+Completed 200 OK in 54ms (Views: 50.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/articles" for ::1 at 2017-03-13 20:50:37 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kAE5X9X50z54tK41fA4FasONi5xMCTQXO8Ms+HyXtdk8I8UzvrTYolLx0ACw2tkWMmF1GHXs4/ERKO1JtY7WLw==", "article"=>{"title"=>"Chile Sub 17: A un paso de la hazaña", "headline"=>"La baby Roja está muy cerca de asegurar ante Paraguay el pase al Mundial de India.", "body"=>"La ilusión está inmóvil. La Baby Roja va a paso firme en este Sudamericano. El equipo ya ha jugado seis partidos en este torneo, logrando dos empates y cuatro triunfos, tres de éstos de manera consecutiva. Hasta ahora, un invicto inédito. En las 16 versiones anteriores había perdido, al menos, un partido. Por lo tanto, si durante esta edición no cae, sería un hecho histórico. Además, una selección sub 17 no clasificaba ni siquiera a una fase final de un campeonato continental desde 1997. Son 20 años de maleficio con los que está acabando la escuadra de Hernán Caputto.\r\n\r\nColombia fue el último rival que sufrió con el esquema del equipo chileno. Un estilo de juego basado en la fortaleza de su línea defensiva tiene a los jóvenes a un paso de clasificar. Mucho se le criticó en un comienzo al equipo, sobre todo por el exceso de pelotazo. Pero la zaga se ha afirmado. Se podría decir que es un equipo italianizado, o a la uruguaya. O como insinuó Caputto en la conferencia de prensa luego del partido ante los cafeteros, una escuadra similar a la selección de Grecia que ganó la Eurocopa 2004, con un juego basado en los aspectos defensivos, en el que cuidar y aguantar el resultado es fundamental.\r\n\r\nFrente a Paraguay la selección se juega importantes chances de anotarse en la cita planetaria. En caso de ganar, el equipo sumaría nueve unidades, y con ese puntaje, sin importar lo que suceda con el resto de los partidos de la fecha, tendrá que agendar su viaje a India.\r\n\r\nA su favor tendrá una hinchada que ha sido fiel. El Teniente de Rancagua registra un promedio de 9.000 personas en cada partido de la Baby Roja.\r\n\r\n“La ilusión siempre está”, dijo Lucas Alarcón, capitán y figura del equipo. Sobre Paraguay, el rival de hoy, expresó: “Nos enfrentamos en la Copa UC, pero ahora es muy distinto. Conocemos a sus jugadores más peligrosos”. Y avisó: “Si ellos tienen muy buen juego aéreo, hay que jugar a ras de piso”. Sobre la labor defensiva, fue enfático: “Siempre tenemos que estar bien parados atrás. Hemos jugado todos los partidos de la manera que nos dice el profe”.\r\n\r\nLos jóvenes irán por la hazaña en Rancagua."}, "commit"=>"Create Article"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (6.7ms)[0m  [1m[32mINSERT INTO "articles" ("title", "headline", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Chile Sub 17: A un paso de la hazaña"], ["headline", "La baby Roja está muy cerca de asegurar ante Paraguay el pase al Mundial de India."], ["body", "La ilusión está inmóvil. La Baby Roja va a paso firme en este Sudamericano. El equipo ya ha jugado seis partidos en este torneo, logrando dos empates y cuatro triunfos, tres de éstos de manera consecutiva. Hasta ahora, un invicto inédito. En las 16 versiones anteriores había perdido, al menos, un partido. Por lo tanto, si durante esta edición no cae, sería un hecho histórico. Además, una selección sub 17 no clasificaba ni siquiera a una fase final de un campeonato continental desde 1997. Son 20 años de maleficio con los que está acabando la escuadra de Hernán Caputto.\r\n\r\nColombia fue el último rival que sufrió con el esquema del equipo chileno. Un estilo de juego basado en la fortaleza de su línea defensiva tiene a los jóvenes a un paso de clasificar. Mucho se le criticó en un comienzo al equipo, sobre todo por el exceso de pelotazo. Pero la zaga se ha afirmado. Se podría decir que es un equipo italianizado, o a la uruguaya. O como insinuó Caputto en la conferencia de prensa luego del partido ante los cafeteros, una escuadra similar a la selección de Grecia que ganó la Eurocopa 2004, con un juego basado en los aspectos defensivos, en el que cuidar y aguantar el resultado es fundamental.\r\n\r\nFrente a Paraguay la selección se juega importantes chances de anotarse en la cita planetaria. En caso de ganar, el equipo sumaría nueve unidades, y con ese puntaje, sin importar lo que suceda con el resto de los partidos de la fecha, tendrá que agendar su viaje a India.\r\n\r\nA su favor tendrá una hinchada que ha sido fiel. El Teniente de Rancagua registra un promedio de 9.000 personas en cada partido de la Baby Roja.\r\n\r\n“La ilusión siempre está”, dijo Lucas Alarcón, capitán y figura del equipo. Sobre Paraguay, el rival de hoy, expresó: “Nos enfrentamos en la Copa UC, pero ahora es muy distinto. Conocemos a sus jugadores más peligrosos”. Y avisó: “Si ellos tienen muy buen juego aéreo, hay que jugar a ras de piso”. Sobre la labor defensiva, fue enfático: “Siempre tenemos que estar bien parados atrás. Hemos jugado todos los partidos de la manera que nos dice el profe”.\r\n\r\nLos jóvenes irán por la hazaña en Rancagua."], ["created_at", 2017-03-13 23:50:37 UTC], ["updated_at", 2017-03-13 23:50:37 UTC]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/articles/3
+Completed 302 Found in 11ms (ActiveRecord: 7.7ms)
+
+
+Started GET "/articles/3" for ::1 at 2017-03-13 20:50:37 -0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 21ms (Views: 18.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/articles" for ::1 at 2017-03-13 20:50:42 -0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 34ms (Views: 30.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for ::1 at 2017-03-13 20:50:51 -0300
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" ORDER BY "articles"."created_at" ASC LIMIT $1[0m  [["LIMIT", 10]]
+  Rendered welcome/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 31ms (Views: 28.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/welcome" for ::1 at 2017-03-13 20:51:30 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/welcome"):
+  
+actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.4.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.4.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+puma (3.7.1) lib/puma/configuration.rb:232:in `call'
+puma (3.7.1) lib/puma/server.rb:578:in `handle_request'
+puma (3.7.1) lib/puma/server.rb:415:in `process_client'
+puma (3.7.1) lib/puma/server.rb:275:in `block in run'
+puma (3.7.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered collection of /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [17 times] (9.0ms)
+  Rendered /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.1ms)
+  Rendering /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/Sofi/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (83.0ms)
+Started GET "/" for ::1 at 2017-03-13 20:54:10 -0300
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" ORDER BY "articles"."created_at" ASC LIMIT $1[0m  [["LIMIT", 10]]
+  Rendered welcome/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 38ms (Views: 34.8ms | ActiveRecord: 0.4ms)
+
+

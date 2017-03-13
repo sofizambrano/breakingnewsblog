@@ -1,4 +1,17 @@
-<h2>Hello World</h2>
-<p>
-  The time is now: <%= Time.now %>
-</p>
+<h1>News Feed                       <h5><%= link_to 'Administration Panel', articles_path %></h5></h1>
+
+<div id="adm_users" class="container">
+      <div class="row">
+        <% Article.order(:created_at).first(10).each do |f| %>
+          <div class="col-md-6">
+            <div class="user">
+              <h3><%=f.title%></h3>
+              <h5 align="justify"><%=f.headline%><br/></h5>
+              <h6 align="justify"><%= f.text_to_show %><br/></h6>
+              <td align='right'><%= link_to 'Read article', f %> </td>
+              <br>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>

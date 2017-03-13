@@ -13,3 +13,31 @@
  *= require_tree .
  *= require_self
  */
+#adm_users .user {
+  border: 2px solid #ffffff;
+  padding: 10px 10px 20px 10px;
+  transition: all 0.4s linear;
+  margin-bottom: 30px;
+}
+
+#adm_users .user:hover {
+  background: #E8E8E8;
+  border-color: #989898;
+}
+
+#adm_users .row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  flex-wrap: wrap;
+}
+
+#adm_users .row > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit_user .new_user .sign_in{
+    font-size: medium;
+}
