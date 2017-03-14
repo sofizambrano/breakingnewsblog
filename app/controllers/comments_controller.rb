@@ -25,13 +25,15 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = Comment.new(comment_params)
+    @comment.article = Article.find(params.require(:comment).permit(:article)['article'])
+    @comment.article_id = @comment.article.id
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        format.html { redirect_to @comment.article }
         format.json { render :show, status: :created, location: @comment }
       else
-        format.html { render :new }
+        format.html { redirect_to @comment.article, notice: 'Comment needs an author and a content to be created.'}
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end

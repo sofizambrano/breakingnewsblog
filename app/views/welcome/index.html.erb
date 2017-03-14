@@ -2,10 +2,12 @@
 
 <div id="adm_users" class="container">
       <div class="row">
-        <% Article.order(:created_at).first(10).each do |f| %>
+        <% Article.last_ten.each do |f| %>
           <div class="col-md-6">
             <div class="user">
+
               <h3><%=f.title%></h3>
+              <h6><%= f.created_at %></h6>
               <h5 align="justify"><%=f.headline%><br/></h5>
               <h6 align="justify"><%= f.text_to_show %><br/></h6>
               <h6><%=f.comments.count%> comments</h6>

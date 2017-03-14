@@ -19,4 +19,9 @@ class Article < ApplicationRecord
 
 		return new_text
 	end
+
+	def self.last_ten
+		last = Article.order(:created_at).reverse.first(10)
+	end
+
 end
