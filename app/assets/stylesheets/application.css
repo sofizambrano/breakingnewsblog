@@ -41,3 +41,7 @@
 .edit_user .new_user .sign_in{
     font-size: medium;
 }
+
+body {
+    padding-top: 40px;
+}
