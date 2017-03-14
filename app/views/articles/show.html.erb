@@ -16,6 +16,10 @@
   <h6>Publicado el: <%= @article.created_at %></h6>
 </p>
 
+<p>
+  <h4><%= @article.comments.count %> Comments</h4>
+</p>
+
 <% @article.comments.each do |com| %>
 	<p>
 		<h5><strong><%= com.author %></strong></h5>
@@ -43,7 +47,7 @@
 
   <div class="field">
     <%= f.label :content %>
-    <%= f.text_area :content %>
+    <%= f.text_area :content, size: "60x4" %>
   </div>
 
   <%= f.hidden_field :article, :value => @article.id %>

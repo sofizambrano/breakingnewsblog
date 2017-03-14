@@ -53,6 +53,10 @@ Cada comentario tiene los atributos: id (integer), author o autor (string), cont
 
 Se encuentra un diagrama UML de la base de datos en este repositorio: breakingnewsblog/blob/master/doc/models_complete.svg
 
+Todas las noticias publicadas en el sitio fueron extraidas del sitio:
+
+> [http://www.bbc.com/news](http://www.bbc.com/news)
+
 ___
 
 
