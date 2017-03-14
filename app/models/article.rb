@@ -5,7 +5,7 @@ class Article < ApplicationRecord
 	def text_to_show
 		new_text = ''
 		if self.body.length > 1000
-			words = self.body.split
+			words = self.body.split()
 			words.each do |word|
 				if new_text.length < 1000
 					new_text << ' '

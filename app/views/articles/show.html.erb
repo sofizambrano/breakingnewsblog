@@ -1,24 +1,28 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
-  <%= @article.title %>
+  <strong><h2><%= @article.title %></h2></strong>
 </p>
 
 <p>
-  <strong>Headline:</strong>
-  <%= @article.headline %>
+  <h4 align="justify"><%= @article.headline %></h4>
 </p>
 
 <p>
-  <strong>Body:</strong>
-  <%= @article.body %>
+  <h5 align="justify"><%= @article.body %></h5>
 </p>
 
 <p>
-  <strong>Published on:</strong>
-  <%= @article.created_at %>
+  <h6>Publicado el: <%= @article.created_at %></h6>
 </p>
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Home', root_path %>
+<% @article.comments.each do |com| %>
+	<p>
+		<h5><strong><%= com.author %></strong></h5>
+		<h6><%= com.content %></h6>
+	</p>
+<% end %>
+
+<h6><%= link_to 'New Comment', new_comment_path %></h6>
+
+<h6><%= link_to 'Home', root_path %></h6>

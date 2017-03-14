@@ -8,6 +8,7 @@
               <h3><%=f.title%></h3>
               <h5 align="justify"><%=f.headline%><br/></h5>
               <h6 align="justify"><%= f.text_to_show %><br/></h6>
+              <h6><%=f.comments.count%> comments</h6>
               <td align='right'><%= link_to 'Read article', f %> </td>
               <br>
             </div>
